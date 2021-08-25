@@ -11,14 +11,14 @@
   },
   "dependencies": {
     "@react-navigation/native": "^6.0.2",
-    "@react-navigation/stack": "^6.0.3",
+    "@react-navigation/native-stack": "^6.0.6",
+    "prop-types": "^15.7.2",
     "react": "17.0.1",
     "react-native": "0.64.2",
     "react-native-dialog": "^8.2.0",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-safe-area-context": "^3.3.0",
-    "react-native-screens": "^3.5.0",
-    "prop-types": "*"
+    "react-native-screens": "^3.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

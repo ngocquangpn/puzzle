@@ -7,47 +7,53 @@
  */
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Image, ImageBackground, TouchableOpacity } from "react-native";
+
 import Menu from "./components/Menu";
 import Puzzle from "./components/Puzzle";
+import background from "./assets/images/background.png";
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
+const backButton = require("./assets/images/button.png");
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Menu" component={Menu} options={{
-          headerTitle: "Puzzle Game",
-          headerStyle: {
-            backgroundColor: "#f4511e",
-          },
-          headerTitleAlign: "center",
-          headerTitleStyle: {
-            fontWeight: "bold",
-            fontFamily: "fantasy",
-            fontSize: 28,
-          },
-        }} />
-        <Stack.Screen
-          name="Puzzle"
-          component={Puzzle}
-          options={({ route }) => ({
-            headerTitle: `Level ${route.params.size}x${route.params.size}`,
-            headerStyle: {
-              backgroundColor: "#f28d35",
-            },
-            headerTitleStyle: {
-              fontWeight: "bold",
-              fontFamily: "fantasy",
-              fontSize: 22,
-              textAlign: "center",
-              flexDirection: "row",
-            },
-          })}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <ImageBackground source={background} resizeMode="stretch" style={{ flex: 1 }}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Menu"
+            component={Menu}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Puzzle"
+            component={Puzzle}
+            options={({ navigation, route }) => ({
+              title: `Level ${route.params.size}x${route.params.size}`,
+              headerStyle: {
+                backgroundColor: "#5181ff",
+              },
+              headerTitleStyle: {
+                fontFamily: "BalooBhai2-ExtraBold",
+                fontSize: 22,
+                textAlign: "center",
+              },
+              headerLeft: () => (
+                <TouchableOpacity style={{ margin: 5 }} onPress={() => {
+                  navigation.push("Menu");
+                }}>
+                  <Image style={{ height: 50, width: 40, resizeMode: "contain" }} source={backButton} />
+                </TouchableOpacity>
+              ),
+            })}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </ImageBackground>
   );
 };
 

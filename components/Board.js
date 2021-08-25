@@ -72,7 +72,7 @@ export default class Board extends React.Component {
 function Cell(props) {
   return (
     <TouchableOpacity style={cellStyle(props.size, props.value)} onPress={props.onPress} key={props.index}>
-      <Text style={{ textAlign: "center", fontSize: (deviceWidh - props.size) / props.size / 2 }}>
+      <Text style={{color:"#866001", textAlign: "center",fontFamily:"BalooBhai2-ExtraBold", fontSize: (deviceWidh - props.size) / props.size / 2 }}>
         {props.value != 0 ? props.value : ""}
       </Text>
     </TouchableOpacity>
@@ -85,7 +85,7 @@ function cellStyle(size, value) {
     height: (deviceWidh - size * 4) / size,
     margin: 2,
     borderRadius: 5,
-    backgroundColor: value != 0 ? "#f28d35" : "white",
+    backgroundColor: value != 0 ? "#fad9ae" : "white",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
@@ -96,7 +96,5 @@ const styles = StyleSheet.create({
   board: {
     flexDirection: "row",
     alignItems: "center",
-    borderWidth: 0.5,
-    borderColor: "white",
   },
 });

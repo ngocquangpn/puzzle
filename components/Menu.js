@@ -1,8 +1,24 @@
 import React from "react";
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ImageBackground,
+  Image,
+  FlatList,
+  Dimensions,
+} from "react-native";
+import background from "../assets/images/background.png";
+import logoApp from "../assets/images/logoGame.png";
+
+const { width } = Dimensions.get("window");
+const boxCount = 4;
+const boxWidth = width / boxCount;
+
 
 const btnLevels = [
-  { id: 1, title: "3x3", size: 2 },
+  { id: 1, title: "3x3", size: 3 },
   { id: 2, title: "4x4", size: 4 },
   { id: 3, title: "5x5", size: 5 },
   { id: 4, title: "6x6", size: 6 },
@@ -14,11 +30,20 @@ const btnLevels = [
 ];
 
 export default class Menu extends React.Component {
-  render () {
+  render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.level}>Level</Text>
-        <BtnLevels btnLevels={btnLevels} _navigation={this.props.navigation} />
+        <ImageBackground source={background} resizeMode="stretch" style={{ flex: 1 }}>
+          <View style={{ flex: 1, flexDirection: "column", justifyContent: "center" }}>
+            <View style={{ flexDirection: "row", justifyContent: "center" }}>
+              <Image
+                style={{ height: 100, width: 150, resizeMode: "center" }}
+                source={logoApp}
+              />
+            </View>
+            <BtnLevels btnLevels={btnLevels} _navigation={this.props.navigation} />
+          </View>
+        </ImageBackground>
       </View>
     );
   }
@@ -26,26 +51,29 @@ export default class Menu extends React.Component {
 
 function BtnLevels(props) {
   return (
-    <View>
-      <ScrollView>
-        {props.btnLevels.map((btnLevel) => {
-          return (
-            <View style={styles.btnLevel} key={btnLevel.id}>
-              <TouchableOpacity
-                style={styles.button}
-                onPress={() => props._navigation.navigate("Puzzle", { size: btnLevel.size })}>
-                <Text style={styles.btnLevelText}>{btnLevel.title}</Text>
-              </TouchableOpacity>
-            </View>);
-        })}
-      </ScrollView>
+    <View style={{ alignItems: "center" }}>
+      <Text style={styles.level}>Level</Text>
+      <FlatList
+        style={{ backgroundColor: "#fdf4eb", borderRadius: 8, padding: 5 }}
+        data={btnLevels}
+        renderItem={({ item }) => (
+          <View style={styles.btnLevel} key={item.id}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => props._navigation.push("Puzzle", { size: item.size })}>
+              <Text style={styles.btnLevelText}>{item.title}</Text>
+            </TouchableOpacity>
+          </View>
+        )}
+        numColumns={3}
+        keyExtractor={(item, index) => index.toString()}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#f28d35",
     flex: 1,
   },
 
@@ -53,8 +81,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "white",
     fontSize: 28,
-    padding: 14,
-    fontFamily: "fantasy",
+    fontFamily: "BalooBhai2-ExtraBold",
   },
   btnLevel: {
     alignItems: "center",
@@ -62,16 +89,18 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   button: {
-    backgroundColor: "white",
+    backgroundColor: "#fad9ae",
     alignItems: "center",
     justifyContent: "center",
     margin: 5,
+    elevation: 3,
     borderRadius: 5,
-    width: 140,
-    height: 42,
+    width: boxWidth,
+    height: 50,
   },
   btnLevelText: {
-    fontFamily: "fantasy",
+    fontFamily: "BalooBhai2-ExtraBold",
     fontSize: 16,
+    color: "#866001",
   },
 });

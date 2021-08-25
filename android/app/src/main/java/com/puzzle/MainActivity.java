@@ -1,4 +1,4 @@
-package com.puzzle;
+package com.puzzle.quangvinh2021;
 
 import com.facebook.react.ReactActivity;
 

@@ -67,13 +67,8 @@ export default class LinearTimer extends React.Component {
   }
 
   componentDidUpdate (prevProps) {
-    if (
-      prevProps &&
-      this.props &&
-      prevProps.min &&
-      this.props.min &&
-      (prevProps.min !== this.props.min)
-    ) this._reset();
+    if (prevProps &&this.props && prevProps.min &&this.props.min &&(prevProps.min !== this.props.min))
+      this._reset();
   }
 
   _reset = () => {
