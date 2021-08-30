@@ -13,8 +13,8 @@ class ModalComponent extends Component {
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <Text style={styles.modalText}>Bạn chậm quá :(</Text>
-              <Text style={styles.modalText}>Có cần thêm thời gian không ?</Text>
+              <Text style={styles.modalText}>Hết thời gian :(</Text>
+              <Text style={styles.modalText}>Xem Video để có thêm thời gian ?</Text>
               <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
                 <TouchableOpacity
                   style={{

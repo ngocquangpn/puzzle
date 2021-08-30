@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "227712127158",
+    "project_id": "sort-number-game-puzzle",
+    "storage_bucket": "sort-number-game-puzzle.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:227712127158:android:23dc1858d12f0b341b9617",
+        "android_client_info": {
+          "package_name": "com.puzzle.quangvinh2021"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "227712127158-dp7tfbf4q1k584hnhdcrm7dte1uuhsgk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuDKQ3D4t-brZ6oJQNv4j5tXfM_4crrW8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "227712127158-dp7tfbf4q1k584hnhdcrm7dte1uuhsgk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-8870641261471435~3641254851"
+    }
+  ],
+  "configuration_version": "1"
+}

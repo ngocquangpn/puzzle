@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import background from "../assets/images/background.png";
 import logoApp from "../assets/images/logoGame.png";
+import admob, { BannerAd, BannerAdSize, MaxAdContentRating, TestIds } from "@react-native-firebase/admob";
 
 const { width } = Dimensions.get("window");
 const boxCount = 4;
@@ -30,6 +31,25 @@ const btnLevels = [
 ];
 
 export default class Menu extends React.Component {
+
+  componentDidMount() {
+    admob()
+      .setRequestConfiguration({
+        // Update all future requests suitable for parental guidance
+        maxAdContentRating: MaxAdContentRating.PG,
+
+        // Indicates that you want your content treated as child-directed for purposes of COPPA.
+        tagForChildDirectedTreatment: true,
+
+        // Indicates that you want the ad request to be handled in a
+        // manner suitable for users under the age of consent.
+        tagForUnderAgeOfConsent: true,
+      })
+      .then(() => {
+        // Request config successfully set!
+      });
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -43,6 +63,9 @@ export default class Menu extends React.Component {
             </View>
             <BtnLevels btnLevels={btnLevels} _navigation={this.props.navigation} />
           </View>
+          <BannerAd
+            unitId="ca-app-pub-8870641261471435/1719660916"
+            size={BannerAdSize.ADAPTIVE_BANNER} />
         </ImageBackground>
       </View>
     );
